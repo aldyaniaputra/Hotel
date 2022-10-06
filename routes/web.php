@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AccountMangement;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +23,17 @@ Route::get('/test', function () {
 Route::get('/login', function () {
     return view('layouts.withoutnavbar');
 });
+Route::get('/login', function () {
+    return view('layouts.withoutnavbar');
+});
 Route::get('/AccountTable', function () {
     return view('pages.accountManager');
 });
+route::get('/logingin',[AccountMangement::class,'login']);
+// Route::get('/AccountTable', function () {
+//     return view('pages.accountManager');
+// });
+Route::get('/AccountTable',[AccountMangement::class,'index']);
 Route::get('/gg', function () {
     return redirect('/');
 });

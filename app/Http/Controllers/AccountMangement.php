@@ -21,6 +21,21 @@ class AccountMangement extends Controller
             'password' => Hash::make($request->password),
         ]);
     }
+    public function login($request){
+        $validated = $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ],
+        [
+            'email.required'=>'nis tidak boleh kosong',
+            'password.required'=>'kelas tidak boleh kosong',
+        ]);
+        if (Auth::attempt($validated)){
+            return redirect()->intended('/roleChecker');
+        }
+        Session::flash('gagal','login gagal');
+            return back();
+    }
     //
     public function index(){
         $accounts = User::all();
@@ -30,7 +45,8 @@ class AccountMangement extends Controller
         $data = User::FindOrFail($id);
         return view('pages.AccountEdit',['data'=> $data]);
     }
-    public function Search($request){
-
+    public function EditAccount($request, $id){
+        
     }
+    
 }

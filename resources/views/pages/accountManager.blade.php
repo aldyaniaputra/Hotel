@@ -22,6 +22,13 @@
       </tr>
     </thead>
     <tbody>
+      @foreach ($accounts as $account)
+      <tr>
+        <th scope="row">1</th>
+        <td>{{$account->name}}</td>
+        <td scope="row"><a type="button" href="/editAccount/{{$account->id}}" class="btn btn-info">edit</a><a type="button" href="/delete/{{$account->id}}" class="btn btn-primary">delete</a></td>
+      </tr>
+      @endforeach
       <tr>
         <th scope="row">1</th>
         <td>Mark</td>
